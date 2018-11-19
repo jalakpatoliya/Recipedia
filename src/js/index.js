@@ -14,9 +14,11 @@ import {elements,renderLoader,clearLoader} from "./views/base";
 const state = {}
 
 // SEARCH CONTROLLER
-const   conrtolSearch = async () => {
+const   controlSearch = async () => {
     // 1.Get query from view
     const query = searchView.getInput() 
+    
+
     // console.log(query);
     if (query) {
         // 2.New search object and add to state 
@@ -43,8 +45,9 @@ const   conrtolSearch = async () => {
 
 elements.searchForm.addEventListener('submit',e=>{
     e.preventDefault();
-    conrtolSearch();
+    controlSearch();
 });
+
 
 elements.searchResPages.addEventListener('click',e=>{
     const btn = e.target.closest('.btn-inline');
@@ -57,6 +60,8 @@ elements.searchResPages.addEventListener('click',e=>{
 });
 
 
+
+
 // RECIPE CONTROLLER
 const controlRecipe = async () => {
     // Get id from url
@@ -66,13 +71,14 @@ const controlRecipe = async () => {
     if (id) {
         // Prepare UI for changes
 
-        // Create recipe object
+        // Create recipe object 
         state.recipe = new Recipe(id);
-
+     
         try {
-            // Get recipe data
+            // Get recipe data and parse Ingredients
             await state.recipe.getRecipe();
-    
+            state.recipe.parseIngredients();
+
             // Calculate servings and time
             state.recipe.calcTime();
             state.recipe.calcServings();
@@ -84,6 +90,8 @@ const controlRecipe = async () => {
         }
     }
 };
+
+
 
 // window.addEventListener('hashchange',controlRecipe);
 ['hashchange','load'].forEach(event => {
