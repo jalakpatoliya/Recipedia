@@ -1,4 +1,5 @@
 import { elements } from "./base";
+import Fraction from 'fraction.js';
 
 export const clearRecipe = () =>{
     elements.recipe.innerHTML = '';
@@ -9,10 +10,10 @@ const createIngredient = ingredient => `
             <svg class="recipe__icon">
                 <use href="img/icons.svg#icon-check"></use>
             </svg>
-            <div class="recipe__count">${ingredient.count}</div>
+            <div class="recipe__count">${(new Fraction(ingredient.count)).toFraction(true)} </div>
             <div class="recipe__ingredient">
                 <span class="recipe__unit">${ingredient.unit}</span>
-                ${ingredient.ingredient}}
+                ${ingredient.ingredient}  &nbsp;
             </div>
         </li>
 `

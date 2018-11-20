@@ -9,7 +9,7 @@ export default class Recipe {
 
     async getRecipe (){
         try {
-            const res           = await axios(`https://www.food2fork.com/api/get?key=${key[1]}&rId=${this.id}`);
+            const res           = await axios(`https://www.food2fork.com/api/get?key=${key[0]}&rId=${this.id}`);
             console.log(res);
             this.title          = res.data.recipe.title; 
             this.author         = res.data.recipe.publisher;
@@ -45,10 +45,11 @@ export default class Recipe {
             }); 
             
             // 2. Remove paranthesis
-            ingredient = ingredient.replace(/ *\([^)]*\) */g,"");
+            ingredient = ingredient.replace(/ *\([^)]*\) */g," ");
 
             // 3. Parse ingredients into count, unit and ingredient
             const arrIng = ingredient.split(' ');
+            
             const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2));
             
             let objIng;
@@ -84,6 +85,8 @@ export default class Recipe {
                     ingredient
                 }
             }
+            console.log(objIng);
+            
             return objIng;
         })
         
