@@ -22,7 +22,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
-    "fraction.js": "^4.0.11",
-    "num2fraction": "^1.2.2"
+    "fraction.js": "^4.0.11"
   }
 }
