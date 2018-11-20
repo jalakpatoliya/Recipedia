@@ -1,6 +1,7 @@
 import axios from "axios";
 import  {key} from '../config';
 
+
 export default class Recipe {
     constructor(id) {
         this.id = id;
