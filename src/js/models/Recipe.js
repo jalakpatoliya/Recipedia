@@ -8,7 +8,7 @@ export default class Recipe {
 
     async getRecipe (){
         try {
-            const res           = await axios(`https://www.food2fork.com/api/get?key=${key[6]}&rId=${this.id}`);
+            const res           = await axios(`https://www.food2fork.com/api/get?key=${key[1]}&rId=${this.id}`);
             console.log(res);
             this.title          = res.data.recipe.title; 
             this.author         = res.data.recipe.publisher;
@@ -33,8 +33,8 @@ export default class Recipe {
 
     parseIngredients(){
         const unitsLong  = ['tablespoons','tablespoon','ounces','ounce','teaspoons','teaspoon',
-        'cups','pounds']
-        const unitsShort = ['tbsp','tbsp','oz','oz','tsp','tsp','cup','pound']
+        'cups','pounds','kgs','gms','kilograms','grams']
+        const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound', 'kg', 'gm', 'kg', 'gm']
 
         const newIngredients = this.ingredients.map((el) => {
             // 1. Uniform units
