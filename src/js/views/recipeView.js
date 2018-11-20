@@ -1,5 +1,6 @@
 import { elements } from "./base";
 import Fraction from 'fraction.js';
+import { format } from "util";
 
 export const clearRecipe = () =>{
     elements.recipe.innerHTML = '';
@@ -42,12 +43,12 @@ export const renderRecipe  = recipe => {
                     <span class="recipe__info-text"> servings</span>
 
                     <div class="recipe__info-buttons">
-                        <button class="btn-tiny">
+                        <button class="btn-tiny btn-decrease">
                             <svg>
                                 <use href="img/icons.svg#icon-circle-with-minus"></use>
                             </svg>
                         </button>
-                        <button class="btn-tiny">
+                        <button class="btn-tiny btn-increase">
                             <svg>
                                 <use href="img/icons.svg#icon-circle-with-plus"></use>
                             </svg>
@@ -96,3 +97,14 @@ export const renderRecipe  = recipe => {
 
 }
 
+export const updateServingsIngredients = recipe =>{
+    // update servings
+    document.querySelector('.recipe__info-data--people').textContent = recipe.servings;
+    
+    // update ingredients
+    const countElements = Array.from(document.querySelectorAll('.recipe__count'));
+    countElements.forEach((element,i) => {
+        element.textContent = (new Fraction(recipe.ingredients[i].count)).toFraction(true);
+    });
+
+}

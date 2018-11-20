@@ -9,7 +9,7 @@ export default class Recipe {
 
     async getRecipe (){
         try {
-            const res           = await axios(`https://www.food2fork.com/api/get?key=${key[2]}&rId=${this.id}`);
+            const res           = await axios(`https://www.food2fork.com/api/get?key=${key[3]}&rId=${this.id}`);
             console.log(res);
             this.title          = res.data.recipe.title; 
             this.author         = res.data.recipe.publisher;
@@ -85,7 +85,6 @@ export default class Recipe {
                     ingredient
                 }
             }
-            console.log(objIng);
             
             return objIng;
         })
@@ -93,4 +92,14 @@ export default class Recipe {
         this.ingredients = newIngredients;
     }
 
+    updateServings(type){
+        // updating servings
+        const newServings = type=='dec' ?  this.servings - 1 : this.servings + 1; 
+        
+        // updating ingredients
+        this.ingredients.forEach(ingredient => {
+            ingredient.count *= (newServings/this.servings);
+        });
+        this.servings = newServings;
+    }
 }
