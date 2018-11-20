@@ -73,6 +73,10 @@ const controlRecipe = async () => {
         // Prepare UI for changes
         recipeView.clearRecipe()
         renderLoader(elements.recipe);
+
+        // highlight selected search item
+        if (state.search)  searchView.highlightSelected(id)
+
         // Create recipe object 
         state.recipe = new Recipe(id);
      
@@ -84,7 +88,7 @@ const controlRecipe = async () => {
             // Calculate servings and time
             state.recipe.calcTime();
             state.recipe.calcServings();
-    
+            
             // Render recipe
             clearLoader()
             recipeView.renderRecipe(state.recipe);
