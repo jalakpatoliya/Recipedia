@@ -1,6 +1,7 @@
 // Global app controller
 import  Search  from "./models/Search";
 import  Recipe  from './models/Recipe';
+import  List, { Items }  from './models/List';
 import * as searchView from "./views/searchView";
 import * as recipeView from "./views/recipeView";
 import {elements,renderLoader,clearLoader} from "./views/base";
@@ -118,6 +119,9 @@ elements.recipe.addEventListener('click',e=>{
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
     }
-    console.log(state.recipe);
-    
 });
+
+window.l  = new Items;
+l.addItem(2,"tbsp","salt")
+l.addItem(3,"tbsp","salt")
+
