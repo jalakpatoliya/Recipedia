@@ -1,6 +1,6 @@
 import  uniqid  from "uniqid";
 
-export class Items {
+export default class List {
     constructor() {
         this.items = [];
     }
@@ -12,7 +12,8 @@ export class Items {
             unit,
             ingredient
         }
-        this.items.push(item)
+        this.items.push(item);
+        return item;
     }
 
     deleteItem(id){
