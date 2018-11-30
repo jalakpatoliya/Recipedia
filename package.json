@@ -1,12 +1,13 @@
 {
-  "name": "forkify",
+  "name": "Recipedia",
   "version": "1.0.0",
-  "description": "forkify project",
+  "description": "Recipedia project",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open"
+    "start": "webpack-dev-server --mode development --open",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
   },
   "author": "jalak",
   "license": "ISC",

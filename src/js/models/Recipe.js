@@ -62,7 +62,11 @@ export default class Recipe {
                 if (arrCount.length = 1) {
                     count = eval(arrIng[0].replace('-','+'));
                 } else {
-                    count = eval(arrIng.slice(0,unitIndex).join('+'));
+                    let rectifiedUnitArray = [];
+                    arrIng.slice(0, unitIndex).forEach(element => {
+                        if (!isNaN(parseFloat(element))) rectifiedUnitArray.push(element);
+                    });
+                    count = eval(rectifiedUnitArray.join('+'));
                 }
 
                 objIng = {
