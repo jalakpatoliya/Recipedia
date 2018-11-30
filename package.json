@@ -1,7 +1,7 @@
 {
-  "name": "Recipedia",
+  "name": "forkify",
   "version": "1.0.0",
-  "description": "Recipedia project",
+  "description": "forkify project",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
