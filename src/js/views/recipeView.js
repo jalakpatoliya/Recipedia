@@ -19,6 +19,8 @@ const createIngredient = ingredient => `
 `
 
 export const renderRecipe  = (recipe,isLiked) => {
+    console.log("recipeView:22: ",recipe);
+    
     const markup = `
         <figure class="recipe__fig">
                 <img src="${recipe.img}" alt="Tomato" class="recipe__img">

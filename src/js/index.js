@@ -20,6 +20,7 @@ const state = {};
 // TESTING
 window.state = state;
 
+
 /**
  * SEARCH CONTROLLER
  */
@@ -91,19 +92,26 @@ const controlRecipe = async () => {
     try {
       // Get recipe data and parse Ingredients
       await state.recipe.getRecipe();
+      console.log('indexjs:94: ', state.recipe); //testing
+      
       state.recipe.parseIngredients();
-
+      console.log('indexjs:97 -ran',state.recipe);
+      
       // Calculate servings and time
       state.recipe.calcTime();
+      console.log('indexjs:101 -ran');
       state.recipe.calcServings();
-
+      console.log('indexjs:103 -ran');
+      
       // Render recipe
       clearLoader();
+      console.log('indexjs:107 ',state.recipe);
       recipeView.renderRecipe(
         state.recipe,
         state.likes.isLiked(id),
       );
-    } catch (error) {
+    }
+     catch (error) {
       alert(error);
       console.log(error);
     }
@@ -146,6 +154,19 @@ elements.shopping.addEventListener('click', (e) => {
     const val = parseFloat(e.target.value, 10);
     state.list.updateCount(id, val);
   }
+});
+
+window.addEventListener('load', () => {
+  state.list = new List();
+
+  // Restore list
+  state.list.readStorage();
+
+  // Render existing list
+  console.log('indexjs:165: ', state.list.items);
+  state.list.items.forEach((item) => {
+    listView.renderItem(item);
+  });
 });
 
 /**
