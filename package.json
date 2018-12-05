@@ -4,10 +4,7 @@
     "description": "forkify project",
     "main": "index.js",
     "scripts": {
-        "dev": "webpack --mode development",
-        "build": "webpack --mode production",
-        "start": "webpack-dev-server --mode development --open",
-        "heroku-postbuild": "webpack -p"
+        "start": "node server.js"
     },
     "author": "jalak",
     "license": "ISC",
