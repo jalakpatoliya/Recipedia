@@ -9,7 +9,8 @@ export default class Recipe {
 
   async getRecipe() {
     try {
-      const res = await axios(`https://www.food2fork.com/api/get?key=${key[2]}&rId=${this.id}`);
+      // const res = await axios(`https://www.food2fork.com/api/get?key=${key[2]}&rId=${this.id}`);
+      const res = await axios(`https://forkify-api.herokuapp.com/api/get?rId=${this.id}`);
       console.log(res);
       this.title = res.data.recipe.title;
       this.author = res.data.recipe.publisher;
